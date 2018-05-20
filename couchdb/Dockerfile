@@ -58,6 +58,7 @@ RUN buildDeps=' \
     libmozjs185-dev \
     libnspr4-dev \
     git \
+    nodejs \
     make \
   ' \
   && apt-get update && apt-get install -y --no-install-recommends $buildDeps \
