@@ -57,14 +57,11 @@ RUN buildDeps=' \
     libicu-dev \
     libmozjs185-dev \
     libnspr4-dev \
+    git \
     make \
   ' \
   && apt-get update && apt-get install -y --no-install-recommends $buildDeps \
-  && curl -fSL http://apache.osuosl.org/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz -o couchdb.tar.gz \
-  && curl -fSL https://www.apache.org/dist/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz.asc -o couchdb.tar.gz.asc \
-  && gpg --verify couchdb.tar.gz.asc \
-  && mkdir -p /usr/src/couchdb \
-  && tar -xzf couchdb.tar.gz -C /usr/src/couchdb --strip-components=1 \
+  && git clone https://github.com/apache/couchdb.git /usr/src/couchdb \
   && cd /usr/src/couchdb \
   && ./configure --with-js-lib=/usr/lib --with-js-include=/usr/include/mozjs \
   && make && make install \
