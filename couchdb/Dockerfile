@@ -45,7 +45,7 @@ RUN set -xe \
     gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
   done
 
-ENV COUCHDB_VERSION 1.6.1
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 # download dependencies, compile and install couchdb,
 # set correct permissions, expose couchdb to the outside and disable logging to disk
